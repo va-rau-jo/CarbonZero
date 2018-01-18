@@ -5,7 +5,9 @@ public class GridLockedPlacement : MonoBehaviour
     private GameObject resource;
     public Vector3 placementRotation;
     public Vector3 localScale;
+    public Vector3 positionOffset;
     public string resourceName;
+    public float gridLockSize;
     public float blueprintAlpha;
     Renderer resourceRenderer;
     private bool hovering;
@@ -18,6 +20,8 @@ public class GridLockedPlacement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 mousePos = Input.mousePosition;
+
         if (hovering && Input.GetMouseButtonDown(0))
         {
             resource = SpawnResource();
@@ -27,11 +31,12 @@ public class GridLockedPlacement : MonoBehaviour
 
         if (resource != null && Input.GetMouseButton(0))
         {
-            Vector3 mousePos = Input.mousePosition;
-            Vector3 worlPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, this.transform.position.y));       // Fix Trig Calc for height
-            resource.transform.position = new Vector3(Mathf.Round(worlPos.x / 5) * 5, 1.5f, Mathf.Round(worlPos.z / 5) * 5);
+            Vector3 dir = new Vector3(mousePos.x, 0, mousePos.y);
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
+                resource.transform.position = new Vector3(Mathf.Round(hit.point.x / gridLockSize) * gridLockSize + positionOffset.x, positionOffset.y, Mathf.Round(hit.point.z / gridLockSize) * gridLockSize + positionOffset.z);
         }
-         
+                                                                                                                                    
         if (!hovering && Input.GetMouseButtonUp(0) && resource != null)
         {
             SetResourceAlpha(1.0f);
