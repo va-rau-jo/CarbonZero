@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class CameraController : MonoBehaviour
     // the edges of the terrain
     public float xBounds;
     public float zBounds;
+
+    // clap config
+    public float xMin;
+    public float xMax;
+    public float yMin;
+    public float yMax;
 
     private Vector3 velocity;
 
@@ -36,5 +43,6 @@ public class CameraController : MonoBehaviour
             velocity = (velocity.magnitude > 1) ? velocity - (velocity.normalized * acceleration) : velocity = Vector3.zero;
         }
         transform.position += velocity;
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, xMin, xMax), transform.position.y, Mathf.Clamp(transform.position.z, yMin, yMax));
     }
 }

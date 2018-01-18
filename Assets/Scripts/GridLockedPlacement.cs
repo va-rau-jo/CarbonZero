@@ -28,7 +28,7 @@ public class GridLockedPlacement : MonoBehaviour
         if (resource != null && Input.GetMouseButton(0))
         {
             Vector3 mousePos = Input.mousePosition;
-            Vector3 worlPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, this.transform.position.y));
+            Vector3 worlPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, this.transform.position.y));       // Fix Trig Calc for height
             resource.transform.position = new Vector3(Mathf.Round(worlPos.x / 5) * 5, 1.5f, Mathf.Round(worlPos.z / 5) * 5);
         }
          
