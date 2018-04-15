@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce6b88b3c278994fb78b06c5e0c67a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementRotation: {x: -65.552, y: -90, z: 0}
+  placementRotation: {x: -65.552, y: 180, z: 0}
   localScale: {x: 10, y: 10, z: 10}
   positionOffset: {x: 0, y: 1.5, z: 0}
   resourceName: Solar Panel
@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 668128304}
   - component: {fileID: 668128303}
   - component: {fileID: 668128302}
+  - component: {fileID: 668128306}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -356,15 +357,35 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 668128301}
-  m_LocalRotation: {x: 0.3535534, y: -0.3535534, z: 0.61237246, w: 0.61237246}
-  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1877359254}
   - {fileID: 613550371}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &668128306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 668128301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eead8c79e7d77e42bce13835b61a182, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1000
+  acceleration: 0.8
+  maxSpeed: 100
+  xBounds: 2000
+  zBounds: 2000
+  xMin: 0
+  xMax: 2000
+  yMin: 0
+  yMax: 2000
 --- !u!1 &785297786
 GameObject:
   m_ObjectHideFlags: 0
