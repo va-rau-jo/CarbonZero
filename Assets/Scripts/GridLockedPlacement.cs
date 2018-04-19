@@ -10,7 +10,9 @@ public class GridLockedPlacement : MonoBehaviour
     public float gridLockSize;
     public float blueprintAlpha;
     Renderer resourceRenderer;
+
     private bool hovering;
+    private bool dragging;
 
     // Use this for initialization
     void Start ()
@@ -27,6 +29,7 @@ public class GridLockedPlacement : MonoBehaviour
             resource = SpawnResource();
             resourceRenderer = resource.GetComponent<Renderer>();
             SetResourceAlpha(blueprintAlpha);
+            dragging = true;
         }
 
         if (resource != null && Input.GetMouseButton(0))
@@ -39,6 +42,7 @@ public class GridLockedPlacement : MonoBehaviour
                                                                                                                                     
         if (!hovering && Input.GetMouseButtonUp(0) && resource != null)
         {
+            dragging = false;
             SetResourceAlpha(1.0f);
             resource = null;
         }
@@ -72,5 +76,10 @@ public class GridLockedPlacement : MonoBehaviour
             Color c = material.color;
             material.color = new Color(c.r, c.g, c.b, alpha);
         }
+    }
+
+    public bool IsDragging()
+    {
+        return dragging;
     }
 }
