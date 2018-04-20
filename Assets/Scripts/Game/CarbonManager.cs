@@ -8,10 +8,11 @@ namespace Assets.Scripts
 {
     public class CarbonManager : MonoBehaviour
     {
+        private GameObject carbonPanel;
+
         private void Update()
         {
-            
-        }
 
+        }
     }
 }

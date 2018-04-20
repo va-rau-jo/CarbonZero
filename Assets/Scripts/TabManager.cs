@@ -15,7 +15,7 @@ namespace Assets.Scripts
 
         private void Awake()
         {
-            gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
             economyPanel = GameObject.Find("EconomyPanel");
             carbonPanel = GameObject.Find("CarbonPanel");
 

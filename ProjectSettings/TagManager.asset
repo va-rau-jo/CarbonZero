@@ -6,7 +6,10 @@ TagManager:
   tags:
   - Floor
   - UI
-  - TabController
+  - CarbonManager
+  - TabManager
+  - GameManager
+  - EconomyManager
   layers:
   - Default
   - TransparentFX

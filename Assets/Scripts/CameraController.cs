@@ -25,16 +25,27 @@ namespace Assets.Scripts
 
         private Vector3 velocity;
         private GridLockedPlacement placementScript;
+        private GameManager gameManager;
 
         private void Awake()
         {
             velocity = Vector3.zero;
             placementScript = GameObject.FindGameObjectWithTag("UI").GetComponent<GridLockedPlacement>();
+
+            GameObject gObject = GameObject.FindGameObjectWithTag("GameManager");
+            if(gObject != null)
+                gameManager = gObject.GetComponent<GameManager>();
         }
 
         void Update()
         {
-            if (!placementScript.IsDragging())
+            if(gameManager == null)
+            {
+                GameObject gObject = GameObject.FindGameObjectWithTag("GameManager");
+                if (gObject != null)
+                    gameManager = gObject.GetComponent<GameManager>();
+            }
+            else if (!placementScript.IsDragging() && gameManager.GameHasStarted())
             {
                 if (Input.GetMouseButton(0))
                 {
